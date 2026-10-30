@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Event Registration Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+       🎓
+<header class="header">
+  <h2> College Event Registration Portal</h2>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#events">Events</a>
+    <a href="#myRegistrations">My Registrations</a>
+    <a href="#register">Register</a>
+    <a href="#admin">Admin</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <div>
+     <h1>Register for 2026 Campus Events</h1>
+     <p>Browse upcoming workshops, hackathons and cultural events.</p>
+     <p>Reserve your seat in just a few clicks.</p>
+     <a href="#events" class="btn">Explore Events</a>
+     <a href="#myRegistrations" class="btn secondary">My Registrations</a>
+
+                           📅
+  </div>
+  <div class="hero-icon"> </div>
+</section>
+<section id="events" class="section">
+  <h1>Upcoming Events — 2026</h1>
+  <p>November 2026</p>
+
+  <input type="search" id="searchEvent"
+      placeholder="Search events..." class="search">
+
+  <div class="filters">
+    <button class="filter active" data-filter="all">All Events</button>
+    <button class="filter" data-filter="week">This Week</button>
+    <button class="filter" data-filter="campus">On Campus</button>
+  </div>
+
+  <div class="event-grid">
+
+    <article class="event-card" data-date="2026-11-15">
+      <span class="tag blue">Workshop</span>
+
+           📅
+      <h2>Web Development Workshop</h2>
+
+           📍
+      <p> 15 Nov 2026 | 10 AM – 4 PM</p>
+      <p> Innovation Lab, CSE Building</p>
+      <p>Learn HTML, CSS, JavaScript and web development.</p>
+      <p>Seats available: <span class="remaining">50</span></p>
+      <button class="btn register-btn"
+            data-event="Web Development Workshop">Register Now</button>
+    </article>
+
+    <article class="event-card" data-date="2026-11-20">
+      <span class="tag orange">Hackathon</span>
+
+           📅
+      <h2>Tech Hackathon 2026</h2>
+
+           📍
+      <p> 20–21 Nov 2026 | 9 AM</p>
+      <p> Tech Hub, Engineering Block</p>
+      <p>Build innovative technology solutions in teams.</p>
+      <p>Seats available: <span class="remaining">30</span></p>
+      <button class="btn register-btn"
+            data-event="Tech Hackathon 2026">Register Now</button>
+    </article>
+
+    <article class="event-card" data-date="2026-11-25">
+      <span class="tag purple">Cultural Fest</span>
+
+           📅
+      <h2>Cultural Fest 2026</h2>
+
+           📍
+      <p> 25 Nov 2026 | 4 PM – 9 PM</p>
+      <p> Central Amphitheatre, Campus Grounds</p>
+      <p>Enjoy music, dance, art, food and competitions.</p>
+      <p>Seats available: <span class="remaining">200</span></p>
+      <button class="btn register-btn"
+            data-event="Cultural Fest 2026">Register Now</button>
+    </article>
+
+  </div>
+  <p id="noEvents" hidden>No events found.</p>
+</section>
+<section id="register" class="section">
+  <div class="form-card">
+     <h1>Student Registration Form</h1>
+     <p>Fill in your details to register for an event.</p>
+
+     <div id="errorBanner" class="error-banner" hidden>
+       Please complete all required fields correctly.
+     </div>
+
+     <form id="registrationForm" novalidate>
+       <label for="studentName">Full Name *</label>
+       <input type="text" id="studentName" placeholder="Enter your full name">
+       <small id="nameError" class="error"></small>
+
+       <label for="studentId">Student ID *</label>
+       <input type="text" id="studentId" placeholder="e.g. 22CS1045">
+       <small id="idError" class="error"></small>
+
+       <label for="email">Email Address *</label>
+       <input type="email" id="email" placeholder="student@college.edu">
+       <small id="emailError" class="error"></small>
+
+       <label for="phone">Phone Number *</label>
+       <input type="tel" id="phone" placeholder="10-digit mobile number">
+       <small id="phoneError" class="error"></small>
+
+       <label for="college">College / University *</label>
+       <input type="text" id="college" placeholder="Enter college name">
+       <small id="collegeError" class="error"></small>
+
+       <label for="department">Department *</label>
+       <select id="department">
+         <option value="">-- Select Department --</option>
+         <option>Computer Science</option>
+         <option>Information Technology</option>
+         <option>Electronics and Communication</option>
+         <option>Mechanical Engineering</option>
+         <option>Civil Engineering</option>
+         <option>Commerce</option>
+         <option>Arts and Science</option>
+         <option>Other</option>
+       </select>
+       <small id="departmentError" class="error"></small>
+
+       <label for="eventSelect">Select Event *</label>
+       <select id="eventSelect">
+         <option value="">-- Choose an Event --</option>
+         <option>Web Development Workshop</option>
+         <option>Tech Hackathon 2026</option>
+         <option>Cultural Fest 2026</option>
+       </select>
+       <small id="eventError" class="error"></small>
+       <label for="attendees">Number of Attendees *</label>
+       <input type="number" id="attendees" value="1" min="1" max="10">
+       <small id="attendeesError" class="error"></small>
+
+      <button type="submit" class="btn submit-btn">Submit Registration</button>
+    </form>
+
+
+            ✅
+     <div id="successMessage" class="success" hidden>
+        <h2> Registration Submitted Successfully!</h2>
+        <p>Your registration has been received.</p>
+        <p>Registration ID: <strong id="registrationId"></strong></p>
+        <p>Student: <strong id="confirmedStudent"></strong></p>
+        <p>Event: <strong id="confirmedEvent"></strong></p>
+        <button type="button" id="newRegistration" class="btn">
+          Register Another Student
+        </button>
+     </div>
+  </div>
+</section>
+
+<section id="myRegistrations" class="section">
+  <h1>My Registrations</h1>
+  <div class="table-wrap">
+     <table>
+        <thead>
+           <tr>
+              <th>Registration ID</th>
+              <th>Student Name</th>
+              <th>Event</th>
+              <th>Status</th>
+           </tr>
+        </thead>
+        <tbody id="myRegistrationRows"></tbody>
+     </table>
+  </div>
+</section>
+
+<section id="admin" class="section">
+  <h1>Admin Dashboard</h1>
+
+  <div class="stats">
+    <div class="stat-card">
+       <h3>Total Registrations</h3>
+       <p id="totalRegistrations">0</p>
+    </div>
+    <div class="stat-card">
+       <h3>Total Events</h3>
+       <p>3</p>
+    </div>
+    <div class="stat-card">
+       <h3>Confirmed Registrations</h3>
+       <p id="confirmedRegistrations">0</p>
+    </div>
+  </div>
+
+  <div class="admin-actions">
+    <h2>Recent Registrations</h2>
+    <button id="exportCSV" class="btn">Export CSV</button>
+  </div>
+
+  <div class="table-wrap">
+     <table>
+        <thead>
+           <tr>
+              <th>Student Name</th>
+              <th>Student ID</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Event</th>
+              <th>Department</th>
+              <th>Attendees</th>
+              <th>Status</th>
+              <th>Action</th>
+           </tr>
+        </thead>
+        <tbody id="adminRows"></tbody>
+     </table>
+  </div>
+  <p class="note">Demo project. Data is stored in this browser only.</p>
+</section>
+
+<footer>
+  <p>© 2026 College Event Registration Portal</p>
+  <p>Help | Privacy Policy | Terms | Contact Us</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
